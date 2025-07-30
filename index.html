@@ -9,21 +9,22 @@
       padding: 0;
       overflow: hidden;
       background: #000;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     /* Contenedor de toda la pantalla */
     .pantalla {
       width: 2114px;
       height: 630px;
-      position: absolute;
-      left: 0;
-      top: 0;
-   background-image: url('fondo.png');
-  background-size: cover; /* o contain */
-  background-position: center;
-  background-repeat: no-repeat;
-  transform-origin: center; /* o center si quieres probar */
-
+      position: relative;
+      background-image: url('fondo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     /* Contenedor del área del texto */
@@ -33,13 +34,10 @@
       left: 400px;
       width: 1300px;
       height: 100px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
-      /* Puedes desactivar el fondo si no quieres que se vea */
-      background-color: rgba(255, 255, 255, 0); /* transparente */
+      background-color: rgba(255, 255, 255, 0);
     }
 
     #frase {
@@ -72,7 +70,7 @@
       "La cerveza tiene menos azúcar que un jugo."
     ];
 
-let index = Math.floor(Math.random() * frases.length);
+    let index = Math.floor(Math.random() * frases.length);
     const elemento = document.getElementById("frase");
 
     function cambiarFrase() {
@@ -82,16 +80,7 @@ let index = Math.floor(Math.random() * frases.length);
 
     cambiarFrase();
     setInterval(cambiarFrase, 6000);
-
-    function escalarPantalla() {
-      const escalaX = window.innerWidth / 2114;
-      const escalaY = window.innerHeight / 630;
-      const escala = Math.min(escalaX, escalaY);
-      document.getElementById("pantalla").style.transform = `scale(${escala})`;
-    }
-
-    window.addEventListener("resize", escalarPantalla);
-    escalarPantalla();
   </script>
 </body>
 </html>
+
