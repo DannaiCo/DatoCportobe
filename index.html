@@ -70,7 +70,7 @@
       "La cerveza tiene menos azúcar que un jugo."
     ];
 
-    let index = 0;
+let index = Math.floor(Math.random() * frases.length);
     const elemento = document.getElementById("frase");
 
     function cambiarFrase() {
@@ -79,7 +79,7 @@
     }
 
     cambiarFrase();
-    setInterval(cambiarFrase, 5000);
+    setInterval(cambiarFrase, 6000);
 
     function escalarPantalla() {
       const escalaX = window.innerWidth / 2114;
