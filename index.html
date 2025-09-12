@@ -3,36 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Dato Cervecero Fijo</title>
+
+  <!-- Fuente Germania One -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
       background: #000;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 100%;
+      height: 100%;
     }
 
-    /* Contenedor de toda la pantalla */
     .pantalla {
-      width: 2114px;
-      height: 630px;
-      position: relative;
+      width: 2120px;
+      height: 576px;
+      position: absolute;
+      left: 0;
+      top: 0;
       background-image: url('fondo.png');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
+      transform-origin: top left;
     }
 
-    /* Contenedor del área del texto */
     .contenedor-frase {
       position: absolute;
-      top: 270px;
-      left: 400px;
-      width: 1300px;
+      top: 278px;
+      left: 20px;
+      width: 940px;
       height: 100px;
       display: flex;
       align-items: center;
@@ -41,10 +44,10 @@
     }
 
     #frase {
-      font-size: 72px;
+      font-size: 80px;
       color: black;
-      font-family: 'Open Sans', sans-serif;
-      font-weight: bold;
+      font-family: 'Germania One', system-ui;
+      font-weight: 400;
       letter-spacing: 2px;
       text-align: center;
     }
@@ -59,18 +62,15 @@
 
   <script>
     const frases = [
-      "Un colombiano promedio bebe hasta 55L de cerveza al año.",
-      "En Chequia, una persona consume 140L de cerveza al año.",
-      "En la Edad Media, era más seguro tomar cerveza que agua.",
-      'La espuma de la cerveza se llama "giste" y aporta aroma.',
-      "La cerveza es la 3ra bebida más consumida en el mundo.",
-      "La cerveza más fuerte del mundo tiene 67,5 % de alcohol.",
-      "La cerveza contiene antioxidantes naturales.",
-      "En Bélgica hay más de 1.500 tipos de cerveza.",
-      "La cerveza tiene menos azúcar que un jugo."
+      "El Oktoberfest nació en 1810 como boda real en Múnich.",
+      "Se sirven más de 7 millones de litros de cerveza cada año.",
+      "Los meseros cargan hasta 12 jarras de cerveza a la vez.",
+      "En el festival solo se sirve cerveza fabricada en Múnich.",
+      "El primer barril de cerveza lo abre el alcalde de Múnich.",
+      "La jarra oficial de un litro se llama 'Maßkrug'."
     ];
 
-    let index = Math.floor(Math.random() * frases.length);
+    let index = 0;
     const elemento = document.getElementById("frase");
 
     function cambiarFrase() {
@@ -79,8 +79,20 @@
     }
 
     cambiarFrase();
-    setInterval(cambiarFrase, 6000);
+    setInterval(cambiarFrase, 5000);
+
+    function escalarPantalla() {
+      const escalaX = window.innerWidth / 2114;
+      const escalaY = window.innerHeight / 630;
+      const escala = Math.min(escalaX, escalaY);
+      document.getElementById("pantalla").style.transform = `scale(${escala})`;
+    }
+
+    window.addEventListener("resize", escalarPantalla);
+    escalarPantalla();
   </script>
 </body>
 </html>
+
+
 
