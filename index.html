@@ -61,40 +61,44 @@
   </div>
 
   <script>
-    const frases = [
-      "El Oktoberfest nació en 1810 como boda real en Múnich.",
-      "Se sirven más de 7 millones de litros de cerveza cada año.",
-      "Los meseros cargan hasta 12 jarras de cerveza a la vez.",
-      "En el festival solo se sirve cerveza fabricada en Múnich.",
-      "El primer barril de cerveza lo abre el alcalde de Múnich.",
-      "La jarra oficial de un litro se llama 'Maßkrug'.",
-      "Durante el Oktoberfest se comen más de 200 mil salchichas.",
-      "En Múnich, todo empieza con “O’zapft is!”:Ya está abierto!",
-    ];
+  const frases = [
+    "El Oktoberfest nació en 1810 como boda real en Múnich.",
+    "Se sirven más de 7 millones de litros de cerveza cada año.",
+    "Los meseros cargan hasta 12 jarras de cerveza a la vez.",
+    "En el festival solo se sirve cerveza fabricada en Múnich.",
+    "El primer barril de cerveza lo abre el alcalde de Múnich.",
+    "La jarra oficial de un litro se llama 'Maßkrug'.",
+    "Durante el Oktoberfest se comen más de 200 mil salchichas.",
+    "En Múnich, todo empieza con “O’zapft is!”:Ya está abierto!",
+  ];
 
-    let index = 0;
-    const elemento = document.getElementById("frase");
+  let index = 0;
+  const elemento = document.getElementById("frase");
 
-    function cambiarFrase() {
-      elemento.textContent = frases[index];
-      index = (index + 1) % frases.length;
-    }
+  function cambiarFrase() {
+    elemento.textContent = frases[index];
+    index = (index + 1) % frases.length;
+  }
 
-    cambiarFrase();
-    setInterval(cambiarFrase, 5000);
+  cambiarFrase();
+  setInterval(cambiarFrase, 5000);
 
-    function escalarPantalla() {
-      const escalaX = window.innerWidth / 2114;
-      const escalaY = window.innerHeight / 630;
-      const escala = Math.min(escalaX, escalaY);
-      document.getElementById("pantalla").style.transform = `scale(${escala})`;
-    }
+  function escalarPantalla() {
+    const escalaX = window.innerWidth / 2114;
+    const escalaY = window.innerHeight / 630;
 
-    window.addEventListener("resize", escalarPantalla);
-    escalarPantalla();
-  </script>
+    // 🔑 usar Math.max para hacer que llene toda la pantalla
+    const escala = Math.max(escalaX, escalaY);
+
+    document.getElementById("pantalla").style.transform = `scale(${escala})`;
+  }
+
+  window.addEventListener("resize", escalarPantalla);
+  escalarPantalla();
+</script>
 </body>
 </html>
+
 
 
 
